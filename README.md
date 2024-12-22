@@ -35,7 +35,7 @@ The httpdocs directory is used to serve server content.
 ## How to use it?
 At project directory use:
 ```cmd
-python -m vlsm_http [-a ip_address] [-p port] [-d root_directory]* [-c config_file]* [-h]
+python -m vlsm_http.server [-a ip_address] [-p port] [-d root_directory]* [-c config_file]* [-h]
 ```
 Default command line params:
 - ip_address: 127.0.0.1
