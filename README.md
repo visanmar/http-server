@@ -34,4 +34,9 @@ At project directory use:
 ```cmd
 python -m vlsm_http [-a ip_address] [-p port] [-d root_directory]* [-c config_file]* [-h]
 ```
+Default command line params:
+- ip_address: 127.0.0.1
+- port: 8000
+- root_directory*
+- config_file*
 \* developing it
