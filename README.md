@@ -4,6 +4,7 @@ Example of using sockets in Python to create a package Python HTTP server.
 
 > [!CAUTION]
 > This project is currently developing.
+> Sometimes this project cannot be executed or done incorrectly.
 
 ## What does this project use?
 - Python sockets
@@ -22,7 +23,7 @@ No additional libraries needed. Currently only those incorporated by Python.
 - [x] Add serve all files types
 - [x] Add some header response
 - [x] Add cookies
-- [x] Add command shell options to start server as a Python module
+- [x] Add command shell command line options to start server as a Python module
 - [x] Create main HTTP server thread
 - [ ] Handle clients with threads
 - [ ] Add parser to load settings file
