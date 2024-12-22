@@ -1,0 +1,17 @@
+.git
+.env
+.pyc
+.~
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Python
+env
+__pycache__

@@ -1,0 +1,7 @@
+body {
+	background-color: antiquewhite;
+}
+fieldset {
+	display: inline-block;
+	margin: 20px 0;
+}
