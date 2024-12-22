@@ -34,4 +34,4 @@ At project directory use:
 ```cmd
 python -m vlsm_http [-a ip_address] [-p port] [-d root_directory]* [-c config_file]* [-h]
 ```
-* developing it
+\* developing it
