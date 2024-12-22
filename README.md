@@ -14,6 +14,7 @@ Example of using sockets in Python to create a package Python HTTP server.
 
 ## Requirements
 No additional libraries needed. Currently only those incorporated by Python.
+The httpdocs directory is used to serve server content.
 
 ## Task tracking
 - [x] Create basic HTTP server
