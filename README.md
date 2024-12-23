@@ -24,7 +24,7 @@ The httpdocs directory is used to serve server content.
 - [x] Create Python package
 - [x] Add some header responses
 - [x] Add serve all files types
-- [x] Add some header response
+- [x] Add command line options
 - [x] Add cookies
 - [x] Add command shell command line options to start server as a Python module
 - [x] Create main HTTP server thread
