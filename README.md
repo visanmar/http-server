@@ -7,6 +7,7 @@ Example of using sockets in Python to create a package Python HTTP server.
 > Sometimes this project cannot be executed or done incorrectly.
 
 ## What does this project use?
+- Python 3  (used 3.13)
 - Python sockets
 - Python threads using threading library
 - Python logging library
