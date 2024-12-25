@@ -51,7 +51,4 @@ def validateNetConnectionAddress(ip):
         return False
 
 def validateNetConnectionPort(port=0):
-    if int(port) >= 49152 and int(port) <= 64738:
-        return True
-    else:
-        False
+    return int(port) >= 49152 and int(port) <= 65535

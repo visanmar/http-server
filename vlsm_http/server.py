@@ -294,6 +294,7 @@ class HttpServer(Thread):
 
 if __name__ == '__main__':
     def __cmd_help(exit_code=0, help=''):
+        print('exit code', exit_code)
         if help:
             print(f'Incorrect option: {help}\nserver.py [-a ip_address] [-p port] [-d root_directory] [-c config_file]')
             print('Default:', 'a=127.0.0.1', '/', 'p=8000')
@@ -302,14 +303,15 @@ if __name__ == '__main__':
         sys.exit(exit_code)
 
     argv = sys.argv[1:]
+    print(argv)
     ip = '127.0.0.1'
     port = 8000
     rootDir = '.'
     configFile = None
-    
+
+    opt, arg = getopt.getopt(argv,"ha:p:d:c:")
+
     try:
-        opt, arg = getopt.getopt(argv,"ha:p:")
-        
         for opt, arg in opt:
             if opt == '-h':
                 __cmd_help(1)
@@ -325,12 +327,13 @@ if __name__ == '__main__':
                     port = arg
             elif opt == '-d':
                 if not isdir(arg):
-                    __cmd_help(4, 'c=root_directory')
+                    pass
+                    #__cmd_help(4, 'c=root_directory')
                 else:
                     rootDir = arg
             elif opt == '-c':
                 if not isdir(arg):
-                    __cmd_help(4, 'c=config_file')
+                    __cmd_help(5, 'c=config_file')
                 else:
                     configFile = arg
 
@@ -362,6 +365,7 @@ if __name__ == '__main__':
                 traceback.print_exc()
 
     except getopt.GetoptError:
+        traceback.print_exc()
         __cmd_help(99)
 
 
