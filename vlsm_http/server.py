@@ -9,6 +9,7 @@ import traceback
 from .serverWorker import __ServerWorker
 from threading import (Thread, Event)
 from time import sleep
+from vlsm_http.serverSettings import ServerSettins
 
 
 
@@ -50,21 +51,13 @@ class HttpServer(Thread):
 
         #region PRIVATE PROPERTIES
 
-        self.__address = address
-        self.__maxConn = maxConn
+        self.__SERVER_VERSION = '1.1.0'
         self.__SOCKET = None
-        self.__receiveSize = 1024
-        self.__rootPath = '.'
-        self.__documentIndex = ('index.html')
-        self.__directoryListing = False
-        self.__fileHandlers = {}
-        self.__httpConnectionLive = 'keep-alive'
-        self.__connectionTimeout = 10
-        self.__extraHeaders = {}
-        self.__cookies = []
+        self.__address = address
+        self.__root_directory = '.'
+        self.__config.file = ''
         self.__logger = None
-        self.__loggers = ['console']
-        self.__loggerLevel = 'INFO'
+
 
         #endregion
 
@@ -103,20 +96,13 @@ class HttpServer(Thread):
         self.__address = value
 
     @property
-    def receiveSize(self):
-        return self.__receiveSize
-    @receiveSize.setter
-    def receiveSize(self, value):
-        self.__receiveSize = value
-
-    @property
     def rootPath(self):
-        return self.__rootPath
+        return self.__root_directory
     @rootPath.setter
     def rootPath(self, value):
         if value[0] != '.':
             value = '.' + value
-        self.__rootPath = value
+        self.__root_directory = value
 
     @property
     def documentIndex(self):
@@ -211,7 +197,7 @@ class HttpServer(Thread):
 
     def __setLogger(self):
         self.__logger = logging.getLogger(__name__)
-        self.__logger.setLevel(self.__loggerLevel)
+        self.__logger.setLevel(self.__loggerLevel.upper())
         logger_formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s', '%Y-%m-%d %H:%M:%S')
         if 'console' in self.__loggers:
             console_handler = logging.StreamHandler()
@@ -296,10 +282,10 @@ if __name__ == '__main__':
     def __cmd_help(exit_code=0, help=''):
         print('exit code', exit_code)
         if help:
-            print(f'Incorrect option: {help}\nserver.py [-a ip_address] [-p port] [-d root_directory] [-c config_file]')
+            print(f'Incorrect option: {help}\nserver.py [-a ip_address] [-p port] [-d root_directory] [-c settings_file]')
             print('Default:', 'a=127.0.0.1', '/', 'p=8000')
         else:
-            print('server.py [-a ip_address] [-p port] [-d root_directory] [-c config_file]')
+            print('server.py [-a ip_address] [-p port] [-d root_directory] [-c settings_file]')
         sys.exit(exit_code)
 
     argv = sys.argv[1:]
@@ -309,7 +295,7 @@ if __name__ == '__main__':
     rootDir = '.'
     configFile = None
 
-    opt, arg = getopt.getopt(argv,"ha:p:d:c:")
+    opt, arg = getopt.getopt(argv,"ha:p:d:s:")
 
     try:
         for opt, arg in opt:
@@ -327,13 +313,12 @@ if __name__ == '__main__':
                     port = arg
             elif opt == '-d':
                 if not isdir(arg):
-                    pass
-                    #__cmd_help(4, 'c=root_directory')
+                    __cmd_help(4, 'd=root_directory')
                 else:
                     rootDir = arg
-            elif opt == '-c':
+            elif opt == '-s':
                 if not isdir(arg):
-                    __cmd_help(5, 'c=config_file')
+                    __cmd_help(5, 's=settings_file')
                 else:
                     configFile = arg
 
