@@ -1,3 +1,6 @@
+test_*
+.bat
+
 .git
 .env
 .pyc
