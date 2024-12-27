@@ -14,7 +14,8 @@ class ServerSettins(SettingsParser):
         self._settings['file_handler'] = []
         self._settings['http_connection_live'] = 'keep-alive'
         self._settings['client_connection_timeout'] = 10
-        self._settings['extra_header'] = []
+        self._settings['header'] = []
+        self._settings['client_header'] = []
         self._settings['cookie'] = []
         self._settings['server_name'] = True
         self._settings['loggers'] = ('console',)
