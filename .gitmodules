@@ -1,0 +1,3 @@
+[submodule "viclib"]
+	path = viclib
+	url = https://github.com/visanmar/vic-lib.git
